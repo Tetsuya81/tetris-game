@@ -2,7 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 9999;
+// ポート設定: コマンドライン引数 > 環境変数 > デフォルト値の順で確認
+const PORT = process.argv[2] || process.env.PORT || 9999;
 const HOST = '0.0.0.0';
 
 const MIME_TYPES = {

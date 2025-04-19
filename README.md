@@ -48,6 +48,38 @@
    
    特定のポートでサーバーを実行したい場合は、`server.js`ファイル内の`PORT`変数を変更します。
 
+    *PM2で起動する場合(echosystem.config.jsを使って)*
+    ```
+    pm2 init
+    ```
+
+    ecosystem.config.js
+    ```
+    module.exports = {
+      apps: [{
+        name: "smarttetris",
+        script: "server.js",
+        watch: true,
+        env: {
+          NODE_ENV: "development",
+          PORT: 3000
+        },
+        env_production: {
+          NODE_ENV: "production",
+          PORT: 9999
+        },
+        instances: 1,
+        exec_mode: "fork",
+        autorestart: true,
+        max_memory_restart: "200M"
+      }]
+    };
+
+    ```
+    pm2 start ecosystem.config.js
+    ````
+
+
 3. ブラウザで http://0.0.0.0:9999/ にアクセスします
 
 4. モバイルデバイスでアクセスする場合は、同じWi-Fiネットワーク内のコンピュータのIPアドレスを使用します

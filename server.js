@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // ポート設定: コマンドライン引数 > 環境変数 > デフォルト値の順で確認
-const PORT = process.argv[2] || process.env.PORT || 9999;
+const PORT = process.argv[2] || process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
 const MIME_TYPES = {
@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
 
   // リクエストURLからファイルパスを取得
   let filePath = req.url;
-  if (filePath === '/' || filePath === '/index.html') {
+  if (filePath === '/' || filePath === '/index.html' || filePath === '/tetris-game' || filePath === '/tetris-game/') {
     filePath = '/index.html';
   }
 
